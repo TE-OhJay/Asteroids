@@ -4,6 +4,8 @@
 import pygame
 from constants import *
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init()
@@ -20,9 +22,18 @@ def main():
     #delta time, clock interaction
     dt = 0
     
-    
+    #groups
+    asteroids = pygame.sprite.Group()
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    #Player groups
+    Player.containers = (updateable, drawable)    
+    #asteroid groups:
+    Asteroid.containers = (asteroids, updateable, drawable)
+    AsteroidField.containers = (updateable)
     #Spawning player
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    asteroid_field = AsteroidField()
     
     #Game loop initiation
     while True:
@@ -32,13 +43,19 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
+        #movement update before render
+        updateable.update(dt)
+        
+        
         #fill game screen with black
         screen.fill("black")
         
-        #movement update before render
-        player.update(dt)
+
         #re-render player per frame
-        player.draw(screen)
+        for obj in drawable:
+            obj.draw(screen)
+        
+        
         
         #Display update
         pygame.display.flip()
