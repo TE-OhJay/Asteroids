@@ -35,6 +35,8 @@ def main():
         #fill game screen with black
         screen.fill("black")
         
+        #movement update before render
+        player.update(dt)
         #re-render player per frame
         player.draw(screen)
         
