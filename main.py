@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
@@ -20,6 +21,9 @@ def main():
     dt = 0
     
     
+    #Spawning player
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
     #Game loop initiation
     while True:
         
@@ -30,6 +34,9 @@ def main():
         
         #fill game screen with black
         screen.fill("black")
+        
+        #re-render player per frame
+        player.draw(screen)
         
         #Display update
         pygame.display.flip()
