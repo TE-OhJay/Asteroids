@@ -14,6 +14,10 @@ def main():
     
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     
+    #initiate game clock to regulate loop
+    clock = pygame.time.Clock()
+    #delta time, clock interaction
+    dt = 0
     
     
     #Game loop initiation
@@ -29,6 +33,10 @@ def main():
         
         #Display update
         pygame.display.flip()
+        
+        #End of loop, regulate updating
+        elapsed_miliseconds = clock.tick(60)
+        dt = elapsed_miliseconds / 1000
 
 
 
