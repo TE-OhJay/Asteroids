@@ -5,7 +5,7 @@ from circleshape import CircleShape
 
 class Player(CircleShape):
     
-    containers = None
+    
     
     
     def __init__(self, x, y):

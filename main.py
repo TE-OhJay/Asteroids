@@ -46,24 +46,23 @@ def main():
         #movement update before render
         updateable.update(dt)
         
-        
         #fill game screen with black
         screen.fill("black")
         
-
         #re-render player per frame
         for obj in drawable:
             obj.draw(screen)
         
-        
-        
         #Display update
         pygame.display.flip()
-        
         #End of loop, regulate updating
         elapsed_miliseconds = clock.tick(60)
         dt = elapsed_miliseconds / 1000
-
+        
+        for obj in asteroids:
+            if not obj.collision_check(player):
+                print("Game Over!")
+                exit()
 
 
 

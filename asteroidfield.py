@@ -6,7 +6,7 @@ from constants import *
 
 class AsteroidField(pygame.sprite.Sprite):
     
-    containers = None
+    
     
     
     edges = [
