@@ -3,6 +3,7 @@ import random
 from asteroid import Asteroid
 from constants import *
 
+#Asteroid behavior and control. Full code provided by boot.dev - excersize is in coding, not math
 
 class AsteroidField(pygame.sprite.Sprite):
     

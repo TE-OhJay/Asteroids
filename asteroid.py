@@ -3,6 +3,7 @@ import constants
 import random
 from circleshape import CircleShape
 
+#Initiate and draw individual asteroids
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
@@ -14,6 +15,7 @@ class Asteroid(CircleShape):
     def update(self, dt):
         self.position += self.velocity * dt
 
+    #split asteroids, kill when they go below minimum size
     def split(self):
         if self.radius <= constants.ASTEROID_MIN_RADIUS:
             self.kill()

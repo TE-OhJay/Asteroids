@@ -32,12 +32,13 @@ def main():
     #asteroid groups:
     Asteroid.containers = (asteroids, updateable, drawable)
     AsteroidField.containers = (updateable)
-    
+    #Bullets
     Shot.containers = (updateable, drawable, bullets)
     
     
     #Spawning player
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    #enabling calls to AsteroidField()
     asteroid_field = AsteroidField()
     
     #Game loop initiation
@@ -64,11 +65,12 @@ def main():
         elapsed_miliseconds = clock.tick(60)
         dt = elapsed_miliseconds / 1000
         
+        #check for Asteroids colliding with the player
         for obj in asteroids:
             if not obj.collision_check(player):
                 print("Game Over!")
                 exit()
-            
+            #check for bullets colliding with Asteroids
             for bullet in bullets:
                 if not obj.collision_check(bullet):
                     bullet.kill()
