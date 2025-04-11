@@ -68,6 +68,11 @@ def main():
             if not obj.collision_check(player):
                 print("Game Over!")
                 exit()
+            
+            for bullet in bullets:
+                if not obj.collision_check(bullet):
+                    bullet.kill()
+                    obj.split()
 
 
 
